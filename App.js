@@ -6,7 +6,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Image
-      source={require("./image/logo.png")}
+      source={require("./Image/logo.png")}
       style={styles.logo}
        />
 
@@ -50,14 +50,24 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   btn:{
-    backgroundColor: '#392de9'
+    backgroundColor: '#392de9',
+    width: "80%",
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    marginBottom: 18,
+
+
   },
   btntxt:{
+    color: '#fff',
+    fontSize: 20,
 
   }, 
   slide:{
     height: 50,
-    width: "80%",   
+    width: "100%",   
     height: 50,
     alignItems: 'center',
     justifyContent: 'center'
