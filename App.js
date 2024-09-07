@@ -1,8 +1,18 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import { useState } from 'react';
 import Slider from '@react-native-community/slider'
 
 
 export default function App() {
+
+  let senhas ="a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 0 1 2 3 4 5 6 7 8 9"
+  const[size,setSize] = useState(10)
+
+  function gerarsenha(){
+    console.log("VASCO")
+  }
+
+
   return (
     <View style={styles.container}>
       <Image
@@ -10,7 +20,7 @@ export default function App() {
       style={styles.logo}
        />
 
-       <Text style={styles.title}>20 Caracteres</Text>
+       <Text style={styles.title}>{size} Caracteres</Text>
 
        <View style={styles.area}>
           <Slider
@@ -20,10 +30,12 @@ export default function App() {
           maximumTrackTintColor='#ff0000'
           minimumTrackTintColor='#000 '
           thumbTintColor='#392de9'
+          value={size}
+          onValueChange={(value) => setSize(value.toFixed(0)) }
           />
        </View>
 
-       <TouchableOpacity style={styles.btn}> 
+       <TouchableOpacity style={styles.btn} onPress={gerarsenha}> 
         <Text style={styles.btntxt}>Gerar Senha</Text>
        </TouchableOpacity>
     </View>
@@ -70,7 +82,11 @@ const styles = StyleSheet.create({
     width: "100%",   
     height: 50,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
     
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
   }
 });
