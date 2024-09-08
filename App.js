@@ -1,20 +1,21 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Modal} from 'react-native';
 import { useState } from 'react';
 import Slider from '@react-native-community/slider'
-
+import { ModalApp } from './src/components/modal';
 
 export default function App() {
 
   let senhas ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
   const[size,setSize] = useState(10)
-  const[valorsenha,Setvalorsenha] = useState("")
-
+  const[valorsenha,setValorsenha] = useState("")
+  const[estadomodal,setEstadomodal] = useState(false)
   function gerarsenha(){
     let senha = "";
     for(let i = 0, n = senhas.length; i < size; i++){
       senha += senhas.charAt(Math.floor(Math.random() * n))
     }
-    Setvalorsenha(senha);
+    setValorsenha(senha)
+    setEstadomodal(true);
   }
 
 
@@ -43,6 +44,11 @@ export default function App() {
        <TouchableOpacity style={styles.btn} onPress={gerarsenha}> 
         <Text style={styles.btntxt}>Gerar Senha</Text>
        </TouchableOpacity>
+
+       <Modal visible={estadomodal} animationType='fade' transparent={true} >
+         <ModalApp password={valorsenha} handleClose={() => setEstadomodal(false)}/>
+       </Modal>
+
     </View>
   );
 }
