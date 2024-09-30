@@ -11,7 +11,7 @@ export function ModalApp({password, handleClose}){
     await saveItem("@pass",password)
     alert("Senha copiada")
 
-    
+
     handleClose();
     }
     return( 
@@ -26,7 +26,7 @@ export function ModalApp({password, handleClose}){
                         <Text style={styles.buttontxt}> Voltar </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={[styles.button, styles.buttonsave]}>
+                    <TouchableOpacity style={[styles.button, styles.buttonsave]} onPress={copiarsenha}>
                         <Text style={styles.buttonsavetxt}> Salvar senha </Text>
                     </TouchableOpacity>
                 </View>
